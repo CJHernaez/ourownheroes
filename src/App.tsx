@@ -29,7 +29,7 @@ function App() {
         v2
       </p>
       <p className="cj-throws-stuff-together">
-        CJ will learn AWS through this... probably. 
+        CJ will learn AWS through this... probably. a
       </p>
     </div>
   )
