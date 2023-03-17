@@ -26,7 +26,7 @@ function App() {
         </p>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        v2
       </p>
       <p className="cj-throws-stuff-together">
         CJ will learn AWS through this... probably.
