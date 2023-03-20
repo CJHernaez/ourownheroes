@@ -57,6 +57,7 @@ function App() {
       });
   }, []);
 
+  const colors = { red: 11111, blue: 22222 };
   return (
     <div className="App">
       <div>
@@ -75,6 +76,11 @@ function App() {
         </button>
         <p>Environment: {process.env.NODE_ENV}</p>
       </div>
+      <select>
+        {Array.from(Array(100), (e, i) => {
+          return <option value={i + 1}>{i + 1}</option>;
+        })}
+      </select>
       <p className="cj-throws-stuff-together">
         CJ will learn AWS through this... probably.
       </p>
