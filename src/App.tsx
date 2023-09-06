@@ -82,7 +82,7 @@ function App() {
         })}
       </select>
       <p className="cj-throws-stuff-together">
-        CJ will learn AWS through this... probably. Test Invalidation
+        CJ will learn AWS through this... probably. 9/6/2023
       </p>
     </div>
   );
