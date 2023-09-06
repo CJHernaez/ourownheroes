@@ -82,7 +82,7 @@ function App() {
         })}
       </select>
       <p className="cj-throws-stuff-together">
-        CJ will learn AWS through this... probably. Random Update to check if integration still works
+        CJ will learn AWS through this... probably. 2!
       </p>
     </div>
   );
