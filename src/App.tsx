@@ -62,7 +62,7 @@ function App() {
         })}
       </select>
       <p className="cj-throws-stuff-together">
-        CJ will learn AWS through this... probably. 12/5/2023
+        {"CJ will learn AWS through this... probably. And hopefully Eden will help : ) 12/5/2023"}
       </p>
     </div>
   );
