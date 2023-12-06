@@ -27,7 +27,27 @@ class LifxService {
     
       };
 
-      static axiosCaller = (url: string, method: string) => {
+      public static setLightState = async (setLightStatus: (arg0: any) => void, color:string) => {
+
+
+        (await this.axiosCaller(`https://api.lifx.com/v1/lights/all/state`, "put", color ? {
+            "power": "on",
+            "color": `${color} saturation:1`
+          }:{ "power": "off",
+          "color": `hue:60 saturation:0 kelvin:2000`})
+          .then(function (response) {
+            console.log(response.data);
+            setLightStatus(response.data.results[0].power);
+          })
+          .catch(function (error) {
+            console.error(error);
+          }));
+    
+      };
+
+      
+
+      static axiosCaller = (url: string, method: string, body?: any) => {
         return axios
         .request({
           method: method.toUpperCase(),
@@ -38,7 +58,7 @@ class LifxService {
             Authorization:
               "Bearer c3e80b048bc86f0281665e3be8995ae2788eabb6ddc0b0b2cb57259a0c1172f7",
           },
-          data: { duration: 1 },
+          data: body ?? { duration: 1 },
         })
       }
     }
