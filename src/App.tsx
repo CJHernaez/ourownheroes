@@ -9,32 +9,10 @@ function App() {
   const [count, setCount] = useState(0);
   const [lightStatus, setLightStatus] = useState(undefined);
 
-  useEffect(() => {}, []);
-
-  const toggleLight = () => {
-   LifxService.toggleLight(setLightStatus)
-  };
+  let lights = []
 
   useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://api.lifx.com/v1/lights/id%3Ad073d5656598",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer c3e80b048bc86f0281665e3be8995ae2788eabb6ddc0b0b2cb57259a0c1172f7",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-        setLightStatus(response.data[0].power);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    LifxService.getLights(setLightStatus, "3Ad073d5656598")
   }, []);
 
   const colors = { red: 11111, blue: 22222 };
@@ -50,7 +28,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={toggleLight}>
+        <button onClick={() => {LifxService.toggleLight(setLightStatus, '3Ad073d5656598')}}>
           {" "}
           {lightStatus ? `The lights are ${lightStatus}` : "Checking Status"}
         </button>
