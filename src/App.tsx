@@ -32,6 +32,22 @@ function App() {
           {" "}
           {lightStatus ? `The lights are ${lightStatus}` : "Checking Status"}
         </button>
+
+        <button onClick={() => {LifxService.setLightState(setLightStatus, 'red')}}>
+          {" "}
+          {"RED"}
+        </button>
+
+        <button onClick={() => {LifxService.setLightState(setLightStatus, 'green')}}>
+          {" "}
+          {"GREEN"}
+        </button>
+
+        <button onClick={() => {LifxService.setLightState(setLightStatus, '')}}>
+          {" "}
+          {"OFF"}
+        </button>
+
         <p>Environment: {process.env.NODE_ENV}</p>
       </div>
       <select>
@@ -40,7 +56,7 @@ function App() {
         })}
       </select>
       <p className="cj-throws-stuff-together">
-        {"CJ will learn AWS through this... probably. And hopefully Eden will help : ) 12/5/2023"}
+        {"CJ will learn AWS through this... probably. And hopefully Eden will help. Also pls hit the green button : ) 12/5/2023"}
       </p>
     </div>
   );
