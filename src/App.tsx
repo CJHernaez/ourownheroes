@@ -38,6 +38,11 @@ function App() {
           {"RED"}
         </button>
 
+        <button onClick={() => {LifxService.setLightState(setLightStatus, 'yellow')}}>
+          {" "}
+          {"YELLOW"}
+        </button>
+
         <button onClick={() => {LifxService.setLightState(setLightStatus, 'green')}}>
           {" "}
           {"GREEN"}
