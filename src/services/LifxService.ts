@@ -2,16 +2,18 @@ import axios from "axios";
 
 class LifxService {
 
-    public static getLights = async (setLightStatus: (arg0: any) => void, lightID:string = '' ) => {
+    public static getLights = async (setLightStatus: (arg0: any) => void, setLightColor: (arg0: any) => void,lightID:string = '' ) => {
         (await this.axiosCaller(lightID ? `https://api.lifx.com/v1/lights/id%${lightID}`: 'https://api.lifx.com/v1/lights', "GET")
           .then(function (response) {
             console.log(response.data);
             setLightStatus(response.data[0].power);
+            setLightColor(response.data[0].color)
+            return response
           })
           .catch(function (error) {
             console.error(error);
           }));
-    
+        
       };
 
 
@@ -60,6 +62,26 @@ class LifxService {
           },
           data: body ?? { duration: 1 },
         })
+      }
+
+      public static colorParser = (color: any) =>
+      {
+        console.log("COLOR:", color)
+        switch (JSON.stringify(color))
+        {
+          case JSON.stringify({hue: 60, saturation: 1, kelvin: 2000}):
+            {return "Yellow"}
+
+          case JSON.stringify({hue: 0, saturation: 1, kelvin: 2000}):
+            {return "Red"}
+
+          case JSON.stringify({hue: 120, saturation: 1, kelvin: 2000}):
+            {return "Green"}
+          default:
+            return "Unknown"
+        }
+        
+
       }
     }
 

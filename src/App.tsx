@@ -8,12 +8,13 @@ import LifxService from "./services/LifxService";
 function App() {
   const [count, setCount] = useState(0);
   const [lightStatus, setLightStatus] = useState(undefined);
-
+  const [lightcolor, setLightColor] = useState("")
   let lights = []
 
   useEffect(() => {
-    LifxService.getLights(setLightStatus, "3Ad073d5656598")
-  }, []);
+    LifxService.getLights(setLightStatus, setLightColor,"3Ad073d5656598")
+    console.log(lightcolor)
+  }, [lightStatus]);
 
   const colors = { red: 11111, blue: 22222 };
   return (
@@ -27,6 +28,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <h2> {lightcolor ? `The lights are ${lightStatus == "off"? "off":LifxService.colorParser(lightcolor)}` : "Checking Status"}</h2>
       <div className="card">
         <button onClick={() => {LifxService.toggleLight(setLightStatus, '3Ad073d5656598')}}>
           {" "}
